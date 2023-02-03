@@ -40,7 +40,7 @@ btnLoadMore.addEventListener('click', () => {
   pageNumber++;
   const onTrimValue = input.value.trim();
   btnLoadMore.style.display = 'none';
-  fetchImageGallery(onTrimValue, pageNumber).then(onFoundData => {
+  imageGallery(onTrimValue, pageNumber).then(onFoundData => {
     if (onFoundData.hits.length === 0) {
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
