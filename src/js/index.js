@@ -16,7 +16,7 @@ let pageNumber = 1;
 
 btnSearch.addEventListener('click', e => {
   e.preventDefault();
-  cleanGallery;
+  cleanGallery();
   const onTrimValue = input.value.trim();
   if (onTrimValue !== '') {
     fetchImageGallery(onTrimValue, pageNumber).then(onFoundData => {
