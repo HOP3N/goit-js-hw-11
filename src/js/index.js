@@ -1,5 +1,4 @@
 import { imageGallery } from '../js/imageGallery';
-import * as renderImgList from './renderImgList';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -57,17 +56,51 @@ btnLoadMore.addEventListener('click', () => {
   });
 });
 
+function renderImgList(images) {
+  console.log(images, 'images');
+  const markUp = images
+    .map(image => {
+      console.log('img', image);
+      return `<div class="photo-card">
+    <a href="${image.largeImageURL}"><img class="photo" 
+    src="${image.webformatURL}" alt="${image.tags}" 
+    title="${image.tags}" loading="lazy"/></a>
+    
+    <div class="info">
+        <p class ="info-item"> Likes
+        <span class="info-item-api"> ${image.likes} 
+        </span>
+        </p>
+        <p class ="info-item"> Views
+        <span class="info-item-api"> ${image.views} 
+        </span>
+        </p>
+        <p class ="info-item"> Comments
+        <span class="info__item-api"> ${image.comments} 
+        </span>
+        </p>
+        <p class ="info-item"> Downloads
+        <span class="info-item-api"> ${image.downloads} 
+        </span>
+        </p>
+    </div>
+    </div>`;
+    })
+    .join('');
+    gallery.innerHTML += markUp;
+}
+
 function cleanGallery() {
   gallery.innerHTML = '';
   pageNumber = 1;
   btnLoadMore.style.display = 'none';
 }
 
-const { height: cardHeight } = document
-  .querySelector('.gallery')
-  .firstElementChild.getBoundingClientRect();
+// const { height: cardHeight } = document
+//   .querySelector('.gallery')
+//   .firstElementChild.getBoundingClientRect();
 
-window.scrollBy({
-  top: cardHeight * 2,
-  behavior: 'smooth',
-});
+// window.scrollBy({
+//   top: cardHeight * 2,
+//   behavior: 'smooth',
+// });
