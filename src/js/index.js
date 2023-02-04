@@ -24,7 +24,7 @@ btnSearch.addEventListener('click', e => {
           'Sorry, there are no images matching your search query. Please try again.'
         );
       } else {
-        renderImgList(onFoundData.hits);
+        renderImageList(onFoundData.hits);
         Notiflix.Notify.success(
           `Hooray! We found ${onFoundData.totalHits} images.`
         );
@@ -46,7 +46,7 @@ btnLoadMore.addEventListener('click', () => {
         'Sorry, there are no images matching your search query. Please try again.'
       );
     } else {
-      renderImgList(onFoundData.hits);
+      renderImageList(onFoundData.hits);
       Notiflix.Notify.success(
         `Hooray! We found ${onFoundData.totalHits} images.`
       );
@@ -56,7 +56,7 @@ btnLoadMore.addEventListener('click', () => {
   });
 });
 
-function renderImgList(images) {
+function renderImageList(images) {
   console.log(images, 'images');
   const markUp = images
     .map(image => {
@@ -76,7 +76,7 @@ function renderImgList(images) {
         </span>
         </p>
         <p class ="info-item"> Comments
-        <span class="info__item-api"> ${image.comments} 
+        <span class="info-item-api"> ${image.comments} 
         </span>
         </p>
         <p class ="info-item"> Downloads
